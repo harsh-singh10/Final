@@ -1,28 +1,24 @@
 import express from "express";
-
 import connectDB from "./db/db.js";
 import dotenv from "dotenv"
 
-
-
+// dotEnv Config 
 dotenv.config({
     path: "./.env"
 })
-
-
+// Making app 
 const app = express();
 
-// // Connect to MongoDB
-// connectDB()
-//   .then(() => {
- 
-//     app.listen(process.env.PORT, () => {
-//       console.log(`Server is listening on port ${process.env.PORT}`);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error("MongoDB connection failed:", err);
-//   });
+
+import admin from './routes/admin.route.js'
+
+app.use('/admin' , admin )
+
+
+
+app.get('/' , (req,res)=>{
+  res.send("I am server ")
+})
 
 
 
